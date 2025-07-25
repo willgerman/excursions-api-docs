@@ -1,0 +1,6 @@
+type: string
+description: |
+  The user name of an object.
+minLength: 1
+maxLength: 256
+example: "FBBaz"

@@ -1,0 +1,5 @@
+type: http
+description: |
+  A valid bearer token must be present in the request header.
+schema: bearer
+bearerFormat: JWT

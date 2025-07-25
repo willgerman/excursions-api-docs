@@ -1,0 +1,5 @@
+type: string
+description: The BSON id of an object.
+format: BSON
+pattern: "[0-9a-f]"
+example: "67d75fdeb5e9f677795522ec"

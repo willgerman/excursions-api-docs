@@ -1,0 +1,6 @@
+type: string
+description: |
+  The middle name of an object.
+minLength: 1
+maxLength: 256
+example: "Bar"

@@ -1,0 +1,5 @@
+type: string
+description: The UUIDv4 id of an object.
+format: uuid
+pattern: "[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}"
+example: "c96ec0d7-a6a8-4ec7-8e69-56d70f7509b6"
