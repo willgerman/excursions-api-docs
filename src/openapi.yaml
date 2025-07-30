@@ -1,29 +1,29 @@
 openapi: 3.1.0
 
 info:
-  version: 0.0.0
-  title: Example API
+  version: 1.0.0
+  title: Excursions API
   description: |
-      A template to build OpenAPI documentation from.
+      Documentation of all Excursions API Server endpoints. A lightweight group travel planning app focused on the United States National Parks.
 
   license:
-    name: none
-    identifier: none
+    name: GNU Affero General Public License
+    url: https://www.gnu.org/licenses/agpl-3.0.en.html
 
-servers:
-  - url: 'none'
+# servers:
+#   - url: 'none'
 
 components:
-  securitySchemas:
-    BearerToken:
+  securitySchemes:
+    bearerToken:
       $ref: './components/securitySchemas/common/tokens/bearerToken.yaml'
 
 tags:
   - name: User Management
-    description: 
+    description:
 
   - name: User Authentication
-    description: 
+    description:
 
 x-tagGroups:
   - name: Users
@@ -31,4 +31,14 @@ x-tagGroups:
       - User Management
       - User Authentication
 
-# paths:
+paths:
+  "/user":
+    $ref: './paths/user.yaml'
+  "/users":
+    $ref: './paths/users.yaml'
+  "/user/{userId}":
+    $ref: './paths/user_{userId}.yaml'
+  "/user/sign-in":
+    $ref: './paths/user_sign-in.yaml'
+  "/user/sign-out":
+    $ref: './paths/user_sign-out.yaml'

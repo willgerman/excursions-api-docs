@@ -1,0 +1,5 @@
+type: http
+schema: bearer
+description: JSON Web Token
+bearerFormat: JWT
+example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2ODc2NzcyODU1M2M1ZGZjMTJiNWM2YTAiLCJpYXQiOjE3NTI2ODk3Nzd9.Wp-Q42Etg_4yxp3QA9wELc24vxGfsPYCq6kjlRy_ycw"

@@ -1,0 +1,51 @@
+get:
+  tags:
+    - User Management
+  summary: Get User By Id
+  description: "Return the public data of the queried user."
+  operationId: get-user-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: userId
+      description: "Unique id of the target user."
+      required: true
+      schema:
+        type: string
+
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  _id:
+                    $ref: '../components/schemas/common/ids/bson.yaml'
+                  userName:
+                    $ref: '../components/schemas/common/names/userName.yaml'
+                  firstName:
+                    $ref: '../components/schemas/common/names/firstName.yaml'
+                  lastName:
+                    $ref: '../components/schemas/common/names/lastName.yaml'
+                  email:
+                    $ref: '../components/schemas/common/email.yaml'
+    
+    "400":
+      description: "Bad Request"
+
+    "401":
+      description: "Unauthorized"
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

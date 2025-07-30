@@ -2,4 +2,4 @@ type: email
 description: |
   A valid email address.
 # validation
-example: "wgerman@example.com"
+example: "jsmith@example.com"

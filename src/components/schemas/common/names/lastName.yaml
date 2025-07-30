@@ -3,4 +3,4 @@ description: |
   The last name of an object.
 minLength: 1
 maxLength: 256
-example: "Baz"
+example: "smith"

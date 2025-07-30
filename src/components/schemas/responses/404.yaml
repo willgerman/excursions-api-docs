@@ -1,0 +1,6 @@
+description: "Not Found"
+content:
+  text/plain:
+    schema:
+      type: string
+      description: "Requested resource not found."

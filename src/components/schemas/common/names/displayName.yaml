@@ -3,4 +3,4 @@ description: |
   The display name of an object.
 minLength: 1
 maxLength: 256
-example: "FBBaz"
+example: "jsmith"

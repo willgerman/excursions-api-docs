@@ -1,0 +1,58 @@
+post:
+  tags:
+    - User Authentication
+  summary: Sign In
+  description: "Authenticate a user with matching credentials."
+  operationId: sign-in
+
+  security: []
+
+  requestBody:
+    description: "Payload required to authenticate a user."
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              $ref: '../components/schemas/common/email.yaml'
+            password:
+              $ref: '../components/schemas/common/password.yaml'
+
+  responses:
+    "200":
+      description: "Created"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  _id:
+                    $ref: '../components/schemas/common/ids/bson.yaml'
+                  userName:
+                    $ref: '../components/schemas/common/names/userName.yaml'
+                  firstName:
+                    $ref: '../components/schemas/common/names/firstName.yaml'
+                  lastName:
+                    $ref: '../components/schemas/common/names/lastName.yaml'
+                  email:
+                    $ref: '../components/schemas/common/email.yaml'
+                  # TODO: Add remaining fields
+              token:
+                $ref: '../components/schemas/jwt.yaml'
+
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to authenticate user."
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

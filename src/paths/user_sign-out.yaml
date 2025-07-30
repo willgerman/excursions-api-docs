@@ -1,0 +1,16 @@
+post:
+  tags:
+    - User Authentication
+  summary: Sign Out
+  description: "Sign out the currently authenticated user."
+  operationId: sign-out
+
+  security:
+    - bearerToken: []
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'
