@@ -14,7 +14,7 @@ get:
       description: "Unique id of the target user."
       required: true
       schema:
-        type: string
+        $ref: '../components/schemas/common/ids/bson.yaml'
 
   responses:
     "200":
@@ -25,24 +25,13 @@ get:
             type: object
             properties:
               user:
-                type: object
-                properties:
-                  _id:
-                    $ref: '../components/schemas/common/ids/bson.yaml'
-                  userName:
-                    $ref: '../components/schemas/common/names/userName.yaml'
-                  firstName:
-                    $ref: '../components/schemas/common/names/firstName.yaml'
-                  lastName:
-                    $ref: '../components/schemas/common/names/lastName.yaml'
-                  email:
-                    $ref: '../components/schemas/common/email.yaml'
+                $ref: '../components/schemas/users/public_user.yaml'
     
     "400":
       description: "Bad Request"
 
     "401":
-      description: "Unauthorized"
+      $ref: '../components/schemas/responses/401.yaml'
 
     "404":
       $ref: '../components/schemas/responses/404.yaml'

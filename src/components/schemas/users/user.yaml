@@ -1,0 +1,19 @@
+type: object
+properties:
+  userName:
+    $ref: '../common/names/userName.yaml'
+  firstName:
+    $ref: '../common/names/firstName.yaml'
+  lastName:
+    $ref: '../common/names/lastName.yaml'
+  email:
+    $ref: '../common/email.yaml'
+  # NOTE: This field is not returned from the database...ever.
+  # password:
+  #   $ref: '../common/password.yaml'
+  # trips:
+  # excursions:
+  # excursionInvites:
+  # friends:
+  # friendRequests:
+  # tokens:

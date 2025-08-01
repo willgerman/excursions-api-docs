@@ -1,0 +1,39 @@
+type: object
+properties:
+  _id:
+    $ref: '../common/ids/bson.yaml'
+  name:
+    allOf:
+      - $ref: '../name.yaml'
+      - description: "The name of the excursion."
+  description:
+    allOf:
+      - $ref: '../description.yaml'
+      - description: "A short description of the excursion."
+  host:
+    allOf:
+      - $ref: '../users/public_user.yaml'
+      - description: "The host user of this excursion object."
+  trips:
+    type: array
+    description: "An array of trip objects associated with this excursion."
+    items:
+      $ref: '../trips/trip.yaml'
+  participants:
+    type: array
+    description: "An array of public users who are participants in this excursion."
+    items:
+      $ref: '../users/public_user.yaml'
+  invitees:
+    type: array
+    description: "An array of public users who have been invited to participate in this excursion."
+    items:
+      $ref: '../users/public_user.yaml'
+  isPublic:
+    type: boolean
+    default: false
+    description: "A flag determining if this excursion should be publicly visible."
+  isComplete:
+    type: boolean
+    default: false
+    description: "A flag determining if this excursion has been completed by the host."

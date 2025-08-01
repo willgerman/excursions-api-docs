@@ -1,0 +1,42 @@
+post:
+  tags:
+    - Trip Management
+  summary: Create Trip
+  description: "Create and return a new Trip."
+  operationId: create-trip
+
+  security:
+    - bearerToken: []
+
+  requestBody:
+    description: "Payload required to create a new trip."
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/payloads/trip_payload.yaml'
+
+  responses:
+    "201":
+      description: "Created"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              trip:
+                $ref: '../components/schemas/trips/trip.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to create new trip."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

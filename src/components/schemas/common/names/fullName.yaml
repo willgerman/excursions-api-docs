@@ -1,6 +1,5 @@
 type: string
-description: |
-  The full name of an object.
+description: "The full name of an object."
 minLength: 1
 maxLength: 512
 example: "john smith"

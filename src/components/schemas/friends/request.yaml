@@ -1,0 +1,14 @@
+type: object
+properties:
+  sender:
+    allOf:
+      - $ref: '../users/public_user.yaml'
+      - description: "The user sending this friend request."
+  receiver:
+    allOf:
+      - $ref: '../users/public_user.yaml'
+      - description: "The user receiving this friend request."
+  isAccepted:
+    type: boolean
+    default: false
+    description: "The status of this friend request."

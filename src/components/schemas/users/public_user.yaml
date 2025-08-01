@@ -1,0 +1,12 @@
+type: object
+properties:
+  _id:
+    $ref: '../common/ids/bson.yaml'
+  userName:
+    $ref: '../common/names/userName.yaml'
+  firstName:
+    $ref: '../common/names/firstName.yaml'
+  lastName:
+    $ref: '../common/names/lastName.yaml'
+  email:
+    $ref: '../common/email.yaml'

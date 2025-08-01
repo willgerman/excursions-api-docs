@@ -1,0 +1,53 @@
+post:
+  tags:
+    - Friend Requests
+  summary: Create Friend Request
+  description: "Creates and returns a friend request object for the given user."
+  operationId: create-friend-request
+
+  security:
+    - bearerToken: []
+    
+  parameters:
+    - in: path
+      name: userId
+      description: "Unique id of the user to send a friend request to."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "201":
+      description: "Created"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              request:
+                $ref: '../components/schemas/friends/request.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "409":
+      description: "Conflict"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to create friend request."
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

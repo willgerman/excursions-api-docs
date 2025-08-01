@@ -1,0 +1,151 @@
+get:
+  tags:
+    - Trip Management
+  summary: Get Trip By Id
+  description: "Returns the requested trip object."
+  operationId: get-trip-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: tripId
+      description: "Unique id of the target trip."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              trip:
+                $ref: '../components/schemas/trips/trip.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'
+
+# ---------------------------------------- #
+
+patch:
+  tags:
+    - Trip Management
+  summary: Update Trip
+  description: "Update the target trip."
+  operationId: update-trip
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: tripId
+      description: "Unique id of the target trip."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  requestBody:
+    description: "Payload required to create a new trip."
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/payloads/trip_payload.yaml'
+
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              trip:
+                $ref: '../components/schemas/trips/trip.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id." # TODO: Update this message to be more useful. Synconize this change with the Excursions API Server.
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'
+
+# ---------------------------------------- #
+
+delete:
+  tags:
+    - Trip Management
+  summary: Delete Trip
+  description: "Delete the target trip."
+  operationId: delete-trip
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: tripId
+      description: "Unique id of the target trip."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id." # TODO: Update this message to be more useful. Synconize this change with the Excursions API Server.
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

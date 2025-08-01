@@ -1,0 +1,97 @@
+patch:
+  tags:
+    - Friend Requests
+  summary: Update Friend Request By Id
+  description: "Accept or decline a pending friend request."
+  operationId: update-friend-request-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: requestId
+      description: "Unique id of the friend request to update."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  requestBody:
+    description: "Payload required to update a friend request."
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            isAccepted:
+              type: boolean
+              description: "Boolean value that determines whether to accept or decline the friend request."
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'
+
+# ---------------------------------------- #
+
+delete:
+  tags:
+    - Friend Requests
+  summary: Delete Friend Request By Id
+  description: "Delete an outgoing friend request."
+  operationId: delete-friend-request-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: requestId
+      description: "Unique id of the friend request to delete."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

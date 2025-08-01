@@ -10,20 +10,52 @@ info:
     name: GNU Affero General Public License
     url: https://www.gnu.org/licenses/agpl-3.0.en.html
 
+# ---------------------------------------- #
+
 # servers:
 #   - url: 'none'
+
+# ---------------------------------------- #
 
 components:
   securitySchemes:
     bearerToken:
       $ref: './components/securitySchemas/common/tokens/bearerToken.yaml'
 
+# ---------------------------------------- #
+
 tags:
   - name: User Management
-    description:
+    description: ""
 
   - name: User Authentication
-    description:
+    description: ""
+
+  - name: Friend Requests
+    description: ""
+
+  - name: Friend Management
+    description: ""
+
+  - name: Parks
+    description: ""
+
+  - name: Campgrounds
+    description: ""
+
+  - name: Activities
+    description: ""
+
+  - name: Things To Do
+    description: ""
+
+  - name: Trip Management
+    description: ""
+
+  - name: Excursion Management
+    description: ""
+
+# ---------------------------------------- #
 
 x-tagGroups:
   - name: Users
@@ -31,7 +63,30 @@ x-tagGroups:
       - User Management
       - User Authentication
 
+  - name: Friends
+    tags:
+      - Friend Requests
+      - Friend Management
+
+  - name: National Parks
+    tags:
+      - Parks
+      - Campgrounds
+      - Activities
+      - Things To Do
+
+  - name: Trips
+    tags:
+      - Trip Management
+
+  - name: Excursions
+    tags:
+      - Excursion Management
+
+# ---------------------------------------- #
+
 paths:
+  # User Endpoints
   "/user":
     $ref: './paths/user.yaml'
   "/users":
@@ -42,3 +97,43 @@ paths:
     $ref: './paths/user_sign-in.yaml'
   "/user/sign-out":
     $ref: './paths/user_sign-out.yaml'
+
+  # Friend Endpoints
+  "/friends/requests/{userId}":
+    $ref: './paths/friends_requests_{userId}.yaml'
+  "/friends/requests":
+    $ref: './paths/friends_requests.yaml'
+  "/friends/requests/{requestId}":
+    $ref: './paths/friends_requests_{requestId}.yaml'
+  "/friends":
+    $ref: './paths/friends.yaml'
+  "/friends/{userId}":
+    $ref: './paths/friends_{userId}.yaml'
+
+  # NPS Endpoints
+  "/national-parks":
+    $ref: './paths/national-parks.yaml'
+  "/campgrounds":
+    $ref: './paths/campgrounds.yaml'
+  "/activities":
+    $ref: './paths/activities.yaml'
+  "/things-to-do":
+    $ref: './paths/things-to-do.yaml'
+  
+  # Trip Endpoints
+  "/trip":
+    $ref: './paths/trip.yaml'
+  "/trips":
+    $ref: './paths/trips.yaml'
+  "/trip/{tripId}":
+    $ref: './paths/trip_{tripId}.yaml'
+
+  # Excursion Endpoints
+  "/excursion":
+    $ref: './paths/excursion.yaml'
+  "/excursions":
+    $ref: './paths/excursions.yaml'
+  "/excursion/{excursionId}":
+    $ref: './paths/excursion_{excursionId}.yaml'
+
+  # Sharing Endpoints

@@ -1,0 +1,6 @@
+description: "Unauthorized"
+content:
+  text/plain:
+    schema:
+      type: string
+      description: "Authentication required. Please provide a valid access token."

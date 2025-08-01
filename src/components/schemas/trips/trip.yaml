@@ -1,0 +1,42 @@
+type: object
+properties:
+  name:
+    allOf:
+      - $ref: '../name.yaml'
+      - description: "The name of the trip."
+  description:
+    allOf:
+      - $ref: '../description.yaml'
+      - description: "A short description of the trip."
+  host:
+    allOf:
+      - $ref: '../users/public_user.yaml'
+      - description: "The host user of this trip object."
+  park:
+    allOf:
+      - $ref: '../common/ids/uuidv4.yaml'
+      - description: "The unique uuid of a national park."
+  campground:
+    allOf:
+      - $ref: '../common/ids/uuidv4.yaml'
+      - description: "The unique uuid of a campground"
+  activities:
+    type: array
+    items:
+      allOf:
+        - $ref: '../common/ids/uuidv4.yaml'
+        - description: "The unique uuid of an activity."
+  thingstodo:
+    type: array
+    items:
+      allOf:
+        - $ref: '../common/ids/uuidv4.yaml'
+        - description: "The unique uuid of a thing to do."
+  startDate:
+    allOf:
+      - $ref: '../date.yaml'
+      - description: "The date-time for when the trip is expected to start."
+  endDate:
+    allOf:
+      - $ref: '../date.yaml'
+      - description: "The date-time for when the trip is expected to end."

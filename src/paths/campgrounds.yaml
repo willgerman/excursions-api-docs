@@ -1,0 +1,88 @@
+get:
+  tags:
+    - Campgrounds
+  summary: Get Campgrounds
+  description: ""
+  operationId: get-campgrounds
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: query
+      name: parkCode
+      description: "A comma delimited list of park codes (each 4-10 characters in length)."
+      schema:
+        type: array
+        items:
+          type: string
+
+    - in: query
+      name: stateCode
+      description: "A comma delimited list of 2 character state codes."
+      schema:
+        type: array
+        items:
+          type: string
+
+    - in: query
+      name: limit
+      description: "Number of results to return per request. Default is 1."
+      schema:
+        type: number
+        format: int32
+
+    - in: query
+      name: start
+      description: "Get the next [limit] results starting with this number. Default is 0."
+      schema:
+        type: number
+        format: int32
+
+    - in: query
+      name: q
+      description: "Term to search on."
+      schema:
+        type: string
+
+    - in: query
+      name: sort
+      description: "A comma delimited list of resource properties to sort the results by. Ascending order is assumed for each property. If descending order is desired, the unary negative should prefix the property name. Invalid property values will be ignored. If no sort parameter is passed in a request, the default sort is by fullName. If sorting by relevanceScore, you 1) will likely use -relevanceScore as a higher score indicates a more relevant result and 2) cannot use it in conjunction with other sort properties. Possible fields to sort by are fullName, parkCode, and relevanceScore."
+      schema:
+        type: array
+        items:
+          type: string
+
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              total:
+                type: string
+              limit:
+                type: string
+              start:
+                type: string
+              data:
+                type: array
+                items:
+                  type: object
+                  # TODO: Description of the NPS API Response (Campground) Object.
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to retrieve the requested resource."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

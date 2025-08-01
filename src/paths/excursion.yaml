@@ -1,0 +1,42 @@
+post:
+  tags:
+    - Excursion Management
+  summary: Create Excursion
+  description: "Create and return a new excursion."
+  operationId: create-excursion
+
+  security:
+    - bearerToken: []
+
+  requestBody:
+    description: "Payload required to create a new excursion."
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/payloads/excursion_payload.yaml'
+
+  responses:
+    "201":
+      description: "Created"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              excursion:
+                $ref: '../components/schemas/excursions/excursion.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to create new excursion."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

@@ -1,19 +1,12 @@
 get:
   tags:
-    - User Management
-  summary: Get Users
-  description: "Returns an array of the public data for the queried users."
-  operationId: get-users
+    - Friend Management
+  summary: Get Friends
+  description: "Returns an array of friends for the currently authenticated user."
+  operationId: get-friends
 
   security:
     - bearerToken: []
-
-  parameters:
-    - in: query
-      name: "keywords"
-      schema:
-        type: string
-        description: "Terms to search for users on."
 
   responses:
     "200":
@@ -23,7 +16,10 @@ get:
           schema:
             type: object
             properties:
-              users:
+              total:
+                type: string
+                format: int32
+              requests:
                 type: array
                 items:
                   $ref: '../components/schemas/users/public_user.yaml'
@@ -36,4 +32,3 @@ get:
 
     "500":
       $ref: '../components/schemas/responses/500.yaml'
-  

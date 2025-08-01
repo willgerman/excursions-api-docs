@@ -1,0 +1,38 @@
+delete:
+  tags:
+    - Friend Management
+  summary: Delete Friend
+  description: "Remove the target user from the currently authenticated user's friends array."
+  operationId: get-friends
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: userId
+      description: "Unique id of the user to remove."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

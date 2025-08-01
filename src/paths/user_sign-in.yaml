@@ -14,6 +14,9 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - email
+            - password
           properties:
             email:
               $ref: '../components/schemas/common/email.yaml'
@@ -29,19 +32,7 @@ post:
             type: object
             properties:
               user:
-                type: object
-                properties:
-                  _id:
-                    $ref: '../components/schemas/common/ids/bson.yaml'
-                  userName:
-                    $ref: '../components/schemas/common/names/userName.yaml'
-                  firstName:
-                    $ref: '../components/schemas/common/names/firstName.yaml'
-                  lastName:
-                    $ref: '../components/schemas/common/names/lastName.yaml'
-                  email:
-                    $ref: '../components/schemas/common/email.yaml'
-                  # TODO: Add remaining fields
+                $ref: '../components/schemas/users/user.yaml' # TODO: Add remaining fields to user.yaml
               token:
                 $ref: '../components/schemas/jwt.yaml'
 

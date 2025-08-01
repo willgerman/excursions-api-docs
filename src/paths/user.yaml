@@ -13,18 +13,7 @@ post:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            userName:
-              $ref: '../components/schemas/common/names/userName.yaml'
-            firstName:
-              $ref: '../components/schemas/common/names/firstName.yaml'
-            lastName:
-              $ref: '../components/schemas/common/names/lastName.yaml'
-            email:
-              $ref: '../components/schemas/common/email.yaml'
-            password:
-              $ref: '../components/schemas/common/password.yaml'
+          $ref: '../components/schemas/payloads/user_payload.yaml'
 
   responses:
     "201":
@@ -35,19 +24,7 @@ post:
             type: object
             properties:
               user:
-                type: object
-                properties:
-                  _id:
-                    $ref: '../components/schemas/common/ids/bson.yaml'
-                  userName:
-                    $ref: '../components/schemas/common/names/userName.yaml'
-                  firstName:
-                    $ref: '../components/schemas/common/names/firstName.yaml'
-                  lastName:
-                    $ref: '../components/schemas/common/names/lastName.yaml'
-                  email:
-                    $ref: '../components/schemas/common/email.yaml'
-                  # TODO: Add remaining fields
+                $ref: '../components/schemas/users/user.yaml' # TODO: Add remaining fields to user.yaml
               token:
                 $ref: '../components/schemas/jwt.yaml'
 
@@ -83,25 +60,13 @@ get:
               type: object
               properties:
                 user:
-                  type: object
-                  properties:
-                    _id:
-                      $ref: '../components/schemas/common/ids/bson.yaml'
-                    userName:
-                      $ref: '../components/schemas/common/names/userName.yaml'
-                    firstName:
-                      $ref: '../components/schemas/common/names/firstName.yaml'
-                    lastName:
-                      $ref: '../components/schemas/common/names/lastName.yaml'
-                    email:
-                      $ref: '../components/schemas/common/email.yaml'
-                    # TODO: Add remaining fields
+                  $ref: '../components/schemas/users/user.yaml' # TODO: Add remaining fields to user.yaml
 
       "400":
         description: "Bad Request"
 
       "401":
-        description: "Unauthorized"
+        $ref: '../components/schemas/responses/401.yaml'
 
       "500":
         $ref: '../components/schemas/responses/500.yaml'
@@ -119,26 +84,12 @@ patch:
     - bearerToken: []
 
   requestBody:
-    description: "Payload requires at least target property to update."
+    description: "Payload requires at least one target property to update."
     required: true
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            user:
-              type: object
-              properties:
-                userName:
-                  $ref: '../components/schemas/common/names/userName.yaml'
-                firstName:
-                  $ref: '../components/schemas/common/names/firstName.yaml'
-                lastName:
-                  $ref: '../components/schemas/common/names/lastName.yaml'
-                email:
-                  $ref: '../components/schemas/common/email.yaml'
-                password:
-                  $ref: '../components/schemas/common/password.yaml'
+          $ref: '../components/schemas/payloads/user_payload.yaml'
 
   responses:
     "200":
@@ -149,19 +100,7 @@ patch:
             type: object
             properties:
               user:
-                type: object
-                properties:
-                  _id:
-                    $ref: '../components/schemas/common/ids/bson.yaml'
-                  userName:
-                    $ref: '../components/schemas/common/names/userName.yaml'
-                  firstName:
-                    $ref: '../components/schemas/common/names/firstName.yaml'
-                  lastName:
-                    $ref: '../components/schemas/common/names/lastName.yaml'
-                  email:
-                    $ref: '../components/schemas/common/email.yaml'
-                  # TODO: Add remaining fields
+                $ref: '../components/schemas/users/user.yaml' # TODO: Add remaining fields to user.yaml
 
     "400":
       description: "Bad Request"
@@ -172,7 +111,7 @@ patch:
             description: "Unable to update user."
 
     "401":
-      description: "Unauthorized"
+      $ref: '../components/schemas/responses/401.yaml'
 
     "500":
       $ref: '../components/schemas/responses/500.yaml'
@@ -195,9 +134,14 @@ delete:
 
     "400":
       description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to delete user."
 
     "401":
-      description: "Unauthorized"
+      $ref: '../components/schemas/responses/401.yaml'
 
     "500":
       $ref: '../components/schemas/responses/500.yaml'

@@ -1,0 +1,6 @@
+description: "Forbidden"
+content:
+  text/plain:
+    schema:
+      type: string
+      description: "Authenticated user does not have permission to access this resource."

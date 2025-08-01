@@ -1,0 +1,29 @@
+type: object
+required:
+  - name
+  - description
+  - trips
+properties:
+  name:
+    allOf:
+      - $ref: '../name.yaml'
+      - description: "The name of the excursion."
+  description:
+    allOf:
+      - $ref: '../description.yaml'
+      - description: "A short description of the excursion."
+  trips:
+    type: array
+    description: "An array containing unique ids for the trips to be included in this excursion."
+    items:
+      allOf:
+      - $ref: '../common/ids/bson.yaml'
+      - description: "An id for a trip object."
+  isPublic:
+    type: boolean
+    default: false
+    description: "A flag determining if this excursion should be publicly visible."
+  isComplete:
+    type: boolean
+    default: false
+    description: "A flag determining if this excursion has been completed by the host."

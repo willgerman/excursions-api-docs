@@ -1,0 +1,28 @@
+type: object
+required:
+  - name
+  - description
+  - park
+  - startDate
+  - endDate
+properties:
+  name:
+    allOf:
+      - $ref: '../name.yaml'
+      - description: "The name of the trip."
+  description:
+    allOf:
+      - $ref: '../description.yaml'
+      - description: "A short description of the trip."
+  park:
+    allOf:
+      - $ref: '../common/ids/uuidv4.yaml'
+      - description: "The unique uuid of a national park"
+  startDate:
+    allOf:
+      - $ref: '../date.yaml'
+      - description: "The date-time for when the trip is expected to start."
+  endDate:
+    allOf:
+      - $ref: '../date.yaml'
+      - description: "The date-time for when the trip is expected to end."
