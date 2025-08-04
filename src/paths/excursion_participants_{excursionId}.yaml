@@ -1,0 +1,41 @@
+delete:
+  tags:
+    - Shared Excursion Management
+  summary: Remove Participant By Id
+  description: "Remove a participant (a non-host user can remove themself) from an excursion."
+  operationId: 
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: excursionId
+      description: "Unique id of the excursion to remove a participant for."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "204":
+      description: "No Content"
+    
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

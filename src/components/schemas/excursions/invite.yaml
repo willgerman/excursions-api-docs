@@ -1,0 +1,16 @@
+type: object
+properties:
+  sender:
+    allOf:
+      - $ref: '../users/public_user.yaml'
+      - description: "The user sending this excursion invite."
+  receiver:
+    allOf:
+      - $ref: '../users/public_user.yaml'
+      - description: "The user receiving this excursion invite."
+  excursion:
+    type: object
+  isAccepted:
+    type: boolean
+    default: false
+    description: "The status of this excursion invite."

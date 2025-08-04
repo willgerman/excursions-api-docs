@@ -1,0 +1,56 @@
+post:
+  tags:
+    - Excursion Invites
+  summary: Create Excursion Invite
+  description: "Creates and returns an excursion invite object for the given user."
+  operationId: create-excursion-invite
+
+  security:
+    - bearerToken: []
+    
+  parameters:
+    - in: path
+      name: excursionId
+      description: "Unique id of the excursion to send an invite for."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "201":
+      description: "Created"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              invite:
+                $ref: '../components/schemas/excursions/invite.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "409":
+      description: "Conflict"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Unable to create excursion invite."
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

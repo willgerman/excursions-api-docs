@@ -1,0 +1,148 @@
+get:
+  tags:
+    - Excursion Invites
+  summary: Get Excursion Invite By Id
+  description: "Returns an excursion invite with the matching id."
+  operationId: get-excursion-invite-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: inviteId
+      description: "Unique id of the excursion invite to update."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              invite:
+                $ref: '../components/schemas/excursions/invite.yaml'
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'
+
+# ---------------------------------------- #
+
+patch:
+  tags:
+    - Excursion Invites
+  summary: Update Excursion Invite By Id
+  description: "Accept or decline a pending excursion invite."
+  operationId: update-excursion-invite-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: inviteId
+      description: "Unique id of the excursion invite to update."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  requestBody:
+    description: "Payload required to update a excursion invite."
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            isAccepted:
+              type: boolean
+              description: "Boolean value that determines whether to accept or decline the excursion invite."
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'
+
+# ---------------------------------------- #
+
+delete:
+  tags:
+    - Excursion Invites
+  summary: Delete Excursion Invite By Id
+  description: "Delete an outgoing excursion invite."
+  operationId: delete-excursion-invite-by-id
+
+  security:
+    - bearerToken: []
+
+  parameters:
+    - in: path
+      name: inviteId
+      description: "Unique id of the excursion invite to delete."
+      required: true
+      schema:
+        $ref: '../components/schemas/common/ids/bson.yaml'
+
+  responses:
+    "204":
+      description: "No Content"
+
+    "400":
+      description: "Bad Request"
+      content:
+        text/plain:
+          schema:
+            type: string
+            description: "Invalid Id."
+
+    "401":
+      $ref: '../components/schemas/responses/401.yaml'
+
+    "403":
+      $ref: '../components/schemas/responses/403.yaml'
+
+    "404":
+      $ref: '../components/schemas/responses/404.yaml'
+
+    "500":
+      $ref: '../components/schemas/responses/500.yaml'

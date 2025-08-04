@@ -55,6 +55,12 @@ tags:
   - name: Excursion Management
     description: ""
 
+  - name: Excursion Invites
+    description: ""
+
+  - name: Shared Excursion Management
+    description: ""
+
 # ---------------------------------------- #
 
 x-tagGroups:
@@ -82,35 +88,41 @@ x-tagGroups:
   - name: Excursions
     tags:
       - Excursion Management
+      - Excursion Invites
+      - Shared Excursion Management
 
 # ---------------------------------------- #
 
 paths:
-  # User Endpoints
+  # User Management
   "/user":
     $ref: './paths/user.yaml'
   "/users":
     $ref: './paths/users.yaml'
   "/user/{userId}":
     $ref: './paths/user_{userId}.yaml'
+
+  # User Authentication
   "/user/sign-in":
     $ref: './paths/user_sign-in.yaml'
   "/user/sign-out":
     $ref: './paths/user_sign-out.yaml'
 
-  # Friend Endpoints
+  # Friend Requests
   "/friends/requests/{userId}":
     $ref: './paths/friends_requests_{userId}.yaml'
   "/friends/requests":
     $ref: './paths/friends_requests.yaml'
   "/friends/requests/{requestId}":
     $ref: './paths/friends_requests_{requestId}.yaml'
+
+  # Friend Management
   "/friends":
     $ref: './paths/friends.yaml'
   "/friends/{userId}":
     $ref: './paths/friends_{userId}.yaml'
 
-  # NPS Endpoints
+  # National Park Service Endpoints
   "/national-parks":
     $ref: './paths/national-parks.yaml'
   "/campgrounds":
@@ -120,7 +132,7 @@ paths:
   "/things-to-do":
     $ref: './paths/things-to-do.yaml'
   
-  # Trip Endpoints
+  # Trip Management
   "/trip":
     $ref: './paths/trip.yaml'
   "/trips":
@@ -128,7 +140,7 @@ paths:
   "/trip/{tripId}":
     $ref: './paths/trip_{tripId}.yaml'
 
-  # Excursion Endpoints
+  # Excursion Management
   "/excursion":
     $ref: './paths/excursion.yaml'
   "/excursions":
@@ -136,4 +148,14 @@ paths:
   "/excursion/{excursionId}":
     $ref: './paths/excursion_{excursionId}.yaml'
 
-  # Sharing Endpoints
+  # Excursion Invites
+  "/share/excursion/{excursionId}":
+    $ref: './paths/share_excursion_{excursionId}.yaml'
+  "/share/excursions":
+    $ref: './paths/share_excursions.yaml'
+  "/share/excursions/{inviteId}":
+    $ref: './paths/share_excursions_{inviteId}.yaml'
+
+  # Shared Excursion Management
+  "/excursion/participants/{excursionId}":
+    $ref: './paths/excursion_participants_{excursionId}.yaml'
