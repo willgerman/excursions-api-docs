@@ -1,5 +1,5 @@
 
-# USA National Park Excursions Documentation
+# USA National Park Excursions API Documentation
 
 Documentation for the [Excursions API Server](https://github.com/willgerman/excursions-api-server) project. Built under the OpenAPI 3.1.0 specification using Redocly CLI v1.34.5.
 
@@ -38,16 +38,41 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 <br/>
 
-## Features
-
-- Coming Soon
-
 #### Coming Soon
 
-- Examples
+- Endpoint Response Examples
 
 <br/>
 
 ## Run Locally
 
-- Coming Soon
+The instructions below will guide you through displaying a live preview or outputting a productionized *.html file in your local environment.
+
+#### 1. Clone the repository.
+
+```
+git clone https://github.com/willgerman/excursions-api-docs
+cd ./excursions-api-docs
+```
+
+#### 2. Install dependencies.
+
+The only dependency for this project is [redocly-cli](https://www.npmjs.com/package/@redocly/cli). For this project, install version 1.34.5. It is generally recommended to install this dependency globally, however if you prefer to install it locally then do so.
+
+```
+npm install -g @redocly/cli@1.34.5
+```
+
+#### 3. Run the preview.
+
+```
+redocly preview-docs src/openapi.yaml
+```
+
+#### 4. Build the docs.
+
+The `--output` flag may be omitted. It is used to change the name of the generated *.html file.
+
+```
+redocly build-docs src/openapi.yaml --output=index.html
+```
